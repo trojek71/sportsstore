@@ -12,16 +12,20 @@ var data = [{ id: 1, name: "Kajak", category: "Sporty wodne",
                 description: "Zwiększa wydajność mózgu o 75%", price: 16 },
             { id: 7, name: "Chwiejne krzesło", category: "Szachy",
                 description: "Potajemnie doprowadź przeciwnika do irytacji", price: 29.95 },
-            { id: 8, name: "Szachownica", category: "Szachy",
+            { id: 8, name: "Długa lina", category: "wspinaczka",
+                description: "Tylko nie spadnij", price: 29.95 },
+            { id: 9, name: "Szachownica", category: "Szachy",
                 description: "Zabawa dla całej rodziny", price: 75 },
-            { id: 9, name: "Król(u) złoty", category: "Szachy",
+            { id: 10, name: "Król(u) złoty", category: "Szachy",
                 description: "Pozłacana, zdobiona diamentami figura króla", price: 1200 }]
 
 module.exports = function () {
     return {
         products: data,
         categories: [...new Set(data.map(p => p.category))].sort(),
-        orders: []
+        orders: [],
+        email:[],
+        prices: [...new Set(data.map(p => p.price))].sort()
     } 
 }
 
