@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { Math } from "core-js";
 Vue.use(Vuex);
 const testData = [];
 for (let i = 1; i <= 10; i++) {
@@ -14,6 +15,25 @@ for (let i = 1; i <= 10; i++) {
 export default new Vuex.Store({
   strict: true,
   state: {
-    products: testData
+    products: testData,
+    productsTotal: testData.length,
+    currentPage: 1,
+    pageSize: 4
+  },
+  getters: {
+    processedProducts: state => {
+      let index = (state.currentPage - 1) * state.pageSize;
+      return state.products.slice(index, index + state.pageSize);
+    },
+    pageCount: state => Math.ceil(state.productsTotal / state.pageSize)
+  },
+  mutations: {
+    setCurrentpage(state, page) {
+      state.currentPage = page;
+    },
+    setPageSize(state, size) {
+      state.PageSize = size;
+      state.currentPage = 1;
+    }
   }
 });
