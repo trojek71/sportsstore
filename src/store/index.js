@@ -28,11 +28,11 @@ export default new Vuex.Store({
     pageCount: state => Math.ceil(state.productsTotal / state.pageSize)
   },
   mutations: {
-    setCurrentpage(state, page) {
+    setCurrentPage(state, page) {
       state.currentPage = page;
     },
     setPageSize(state, size) {
-      state.PageSize = size;
+      state.pageSize = size;
       state.currentPage = 1;
     }
   }
